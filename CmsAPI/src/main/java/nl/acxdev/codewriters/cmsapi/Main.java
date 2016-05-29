@@ -6,6 +6,7 @@
 package nl.acxdev.codewriters.cmsapi;
 
 import static spark.Spark.*;
+import nl.acxdev.codewriters.methods.*;
 
 /**
  *
@@ -14,7 +15,10 @@ import static spark.Spark.*;
 public class Main {
     public static void main(String[] args){
         // Get the servers with the containers in the servers
-        get("/serverList", (req,res) -> "Get the server list");
+        get("/serverList", (req,res) -> {
+            GetServers getter = new GetServers();
+            return getter.getData();
+        });
         
         // Start or stop a specific container
         get("/start/:cId/:cType", (req, res) -> "Start container with id " + req.params("cId") + " of type " + req.params("cType"));
