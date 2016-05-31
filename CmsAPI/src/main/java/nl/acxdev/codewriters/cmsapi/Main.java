@@ -17,7 +17,8 @@ public class Main {
         // Get the servers with the containers in the servers
         get("/serverList", (req,res) -> {
             GetServers getter = new GetServers();
-            return getter.getData();
+            getter.getData();
+            return "Test"; 
         });
         
         // Start or stop a specific container

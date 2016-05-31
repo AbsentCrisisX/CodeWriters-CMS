@@ -5,6 +5,8 @@
  */
 package nl.acxdev.codewriters.methods;
 
+import nl.acxdev.codewriters.cmsapi.reader.JSONReader;
+
 /**
  *
  * @author Absentium
@@ -15,7 +17,9 @@ public class GetServers {
         
     }
     
-    public String getData(){
-        return "Hello World!";
+    public void getData(){
+        JSONReader reader = new JSONReader();
+        
+        reader.getData();
     }
 }
