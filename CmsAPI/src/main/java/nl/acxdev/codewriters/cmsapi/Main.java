@@ -5,8 +5,9 @@
  */
 package nl.acxdev.codewriters.cmsapi;
 
+import nl.acxdev.codewriters.cmsapi.methods.GetServers;
 import static spark.Spark.*;
-import nl.acxdev.codewriters.methods.*;
+import nl.acxdev.codewriters.cmsapi.cors.CorsFilter;
 
 /**
  *
@@ -14,11 +15,13 @@ import nl.acxdev.codewriters.methods.*;
  */
 public class Main {
     public static void main(String[] args){
-        // Get the servers with the containers in the servers
+        CorsFilter.apply();
+        
+        
         get("/serverList", (req,res) -> {
             GetServers getter = new GetServers();
-            getter.getData();
-            return "Test"; 
+            String data = getter.getData();
+            return data; 
         });
         
         // Start or stop a specific container

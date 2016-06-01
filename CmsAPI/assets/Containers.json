@@ -1,22 +1,24 @@
-[{
-    "server" : [{
-        "IPAddress":"145.24.222.144",
-        "container": [{
-            "containerID":"a93ca1dd4f09",
-            "containerName":"high_wright",
-            "containerStatus":"Exited (0) 23 hours ago",
-            "containerImage":"hello-world",
-            "containerType":"Docker"
-        }]
-    }],
-    "server":[{
-        "IPAddress":"146.185.159.191",
-        "container": [{
-            "containerID":"875f643a2ac1",
-            "containerName":"reverent_jang",
-            "containerStatus":"Exited (0) 5 days ago",
-            "containerImage":"hello-world",
-            "containerType":"Docker"
+{
+    "servers" : [{
+        "server1" : [{
+            "ip":"145.24.222.144",
+            "container1": [{
+                "containerID":"a93ca1dd4f09",
+                "containerName":"high_wright",
+                "containerStatus":"Exited (0) 23 hours ago",
+                "containerImage":"hello-world",
+                "containerType":"Docker"
+            }]
+        }],
+        "server2":[{
+            "ip":"146.185.159.191",
+            "container1": [{
+                "containerID":"875f643a2ac1",
+                "containerName":"reverent_jang",
+                "containerStatus":"Exited (0) 5 days ago",
+                "containerImage":"hello-world",
+                "containerType":"Docker"
+            }]
         }]
     }]
-}]
+}
