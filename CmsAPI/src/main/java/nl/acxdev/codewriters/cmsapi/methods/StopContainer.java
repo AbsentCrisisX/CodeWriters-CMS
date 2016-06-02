@@ -17,10 +17,12 @@ import org.json.simple.JSONObject;
 public class StopContainer {
     private String cId;
     private String name;
+    private String cType;
     
-    public StopContainer(String cId, String name){
+    public StopContainer(String name, String cId, String cType){
         this.cId = cId;
         this.name = name;
+        this.cType = cType;
     }
     
     public String stopIt (){
@@ -28,6 +30,7 @@ public class StopContainer {
         
         stopMap.put("name", name);
         stopMap.put("cId", cId);
+        stopMap.put("cType", cType);
         
         JsonCreator creator = new JsonCreator(stopMap);
         

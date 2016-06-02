@@ -26,14 +26,14 @@ public class Main {
         
         // Start or stop a specific container
         post("/start", (req, res) -> {
-            StartContainer start = new StartContainer(req.queryParams("name"), req.queryParams("cId"));
+            StartContainer start = new StartContainer(req.queryParams("name"), req.queryParams("cId"), req.queryParams("cType"));
             
             String result = start.startIt();
             
             return result;
         });
         post("/stop", (req, res) -> {
-            StopContainer stop = new StopContainer(req.queryParams("name"), req.queryParams("cId"));
+            StopContainer stop = new StopContainer(req.queryParams("name"), req.queryParams("cId"), req.queryParams("cType"));
             
             String result = stop.stopIt();
             
