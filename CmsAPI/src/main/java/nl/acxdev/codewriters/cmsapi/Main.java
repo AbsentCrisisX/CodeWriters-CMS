@@ -25,8 +25,20 @@ public class Main {
         });
         
         // Start or stop a specific container
-        get("/start/:cId/:cType", (req, res) -> "Start container with id " + req.params("cId") + " of type " + req.params("cType"));
-        get("/stop/:cId/:cType", (req, res) -> "Stop container with id " + req.params("cId") + " of type " + req.params("cType"));
+        post("/start", (req, res) -> {
+            StartContainer start = new StartContainer(req.queryParams("name"), req.queryParams("cId"));
+            
+            String result = start.startIt();
+            
+            return result;
+        });
+        post("/stop", (req, res) -> {
+            StopContainer stop = new StopContainer(req.queryParams("name"), req.queryParams("cId"));
+            
+            String result = stop.stopIt();
+            
+            return result;
+        });
         
         // Update a specific container
         post("/rename", (req, res) -> {
