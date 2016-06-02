@@ -32,7 +32,6 @@ public class GetServers {
             JSONObject obj = (JSONObject) object;
             
             data = (JSONArray) obj.get("servers");
-            
         }
         catch (Exception e){
             e.printStackTrace();

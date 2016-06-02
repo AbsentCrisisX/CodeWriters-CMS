@@ -24,6 +24,11 @@ public class Main {
             return data; 
         });
         
+        post("/testPost", (req, res) -> {
+            System.out.println(req.body());
+            return "";
+        });
+        
         // Start or stop a specific container
         get("/start/:cId/:cType", (req, res) -> "Start container with id " + req.params("cId") + " of type " + req.params("cType"));
         get("/stop/:cId/:cType", (req, res) -> "Stop container with id " + req.params("cId") + " of type " + req.params("cType"));
