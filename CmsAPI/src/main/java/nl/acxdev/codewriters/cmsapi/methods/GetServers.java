@@ -18,13 +18,12 @@ public class GetServers {
     
     JSONArray data;
     
-    public void GetServers() {
+    public GetServers() {
         
     }
     
     public String getData(){
         JSONParser parser = new JSONParser();
-        
         
         try{
             Object object = parser.parse(new FileReader("/Users/absentium/GitHub Projects/CodeWriters-CMS/CmsAPI/assets/Containers.json"));

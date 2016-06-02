@@ -5,7 +5,7 @@
  */
 package nl.acxdev.codewriters.cmsapi;
 
-import nl.acxdev.codewriters.cmsapi.methods.GetServers;
+import nl.acxdev.codewriters.cmsapi.methods.*;
 import static spark.Spark.*;
 import nl.acxdev.codewriters.cmsapi.cors.CorsFilter;
 
@@ -19,14 +19,9 @@ public class Main {
         
         
         get("/serverList", (req,res) -> {
-            GetServers getter = new GetServers();
-            String data = getter.getData();
+            GetServers getS = new GetServers();
+            String data = getS.getData();
             return data; 
-        });
-        
-        post("/testPost", (req, res) -> {
-            System.out.println(req.body());
-            return "";
         });
         
         // Start or stop a specific container
@@ -34,7 +29,13 @@ public class Main {
         get("/stop/:cId/:cType", (req, res) -> "Stop container with id " + req.params("cId") + " of type " + req.params("cType"));
         
         // Update a specific container
-        get("/rename/:cId/:cType/:cNewName", (req, res) -> "Rename container with id " + req.params("cId") + " of type " + req.params("cType") + " to " + req.params("cNewName"));
+        post("/rename", (req, res) -> {
+            RenameContainer rename = new RenameContainer(req.queryParams("name"), req.queryParams("cId"), req.queryParams("cType"), req.queryParams("extra"));
+            
+            String result = rename.sendName();
+            
+            return result;
+        });
         get("/move/:cId/:cType/:cDestination", (req, res) -> "Move container with id " + req.params("cId") + " of type " + req.params("cType") + " to " + req.params("cDestination"));
         
         // Remove a specific container
