@@ -51,7 +51,13 @@ public class Main {
         get("/move/:cId/:cType/:cDestination", (req, res) -> "Move container with id " + req.params("cId") + " of type " + req.params("cType") + " to " + req.params("cDestination"));
         
         // Remove a specific container
-        get("/remove/:cId/:cType", (req, res) -> "Remove container with id " + req.params("cId") + " of type" + req.params("cType"));
+        post("/remove", (req, res) -> {
+            RemoveContainer remove = new RemoveContainer(req.queryParams("name"), req.queryParams("cId"), req.queryParams("cType"));
+            
+            String result = remove.removeIt();
+            
+            return result;
+        });
         
         // Create a new container on a specific server
         get("/create/:cDestination/:image/:cName/:port", (req, res) -> "Create a new container on " + req.params("cDestination") + " with the " + req.params("image") + " image, name it " + req.params("cName") + " and use these " + req.params("port") + " port");
