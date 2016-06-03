@@ -48,7 +48,13 @@ public class Main {
             
             return result;
         });
-        get("/move/:cId/:cType/:cDestination", (req, res) -> "Move container with id " + req.params("cId") + " of type " + req.params("cType") + " to " + req.params("cDestination"));
+        get("/move", (req, res) -> {
+            MoveContainer move = new MoveContainer(req.queryParams("name"), req.queryParams("cId"), req.queryParams("cType"), req.queryParams("destination"));
+            
+            String result = move.moveIt();
+            
+            return result;
+        });
         
         // Remove a specific container
         post("/remove", (req, res) -> {
