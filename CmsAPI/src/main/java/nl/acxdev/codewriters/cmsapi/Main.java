@@ -66,6 +66,12 @@ public class Main {
         });
         
         // Create a new container on a specific server
-        get("/create/:cDestination/:image/:cName/:port", (req, res) -> "Create a new container on " + req.params("cDestination") + " with the " + req.params("image") + " image, name it " + req.params("cName") + " and use these " + req.params("port") + " port");
+        post("/create", (req, res) -> {
+            CreateContainer create = new CreateContainer(req.queryParams("name"), req.queryParams("cType"), req.queryParams("destination"), req.queryParams("image"), req.queryParams("port"));
+            
+            String result = create.createIt();
+            
+            return result;
+        });
     }
 }
