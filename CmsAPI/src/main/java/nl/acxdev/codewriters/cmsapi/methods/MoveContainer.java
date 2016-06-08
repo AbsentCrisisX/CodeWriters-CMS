@@ -8,6 +8,7 @@ package nl.acxdev.codewriters.cmsapi.methods;
 import java.util.HashMap;
 import java.util.Map;
 import nl.acxdev.codewriters.cmsapi.json.JsonCreator;
+import nl.acxdev.codewriters.cmsapi.sender.CommandSender;
 import org.json.simple.JSONObject;
 
 /**
@@ -36,11 +37,19 @@ public class MoveContainer {
         moveMap.put("destination", destination);
         
         JsonCreator creator = new JsonCreator(moveMap);
+        JSONObject createdJson = creator.createJson();
         
-        JSONObject receivedJson = creator.createJson();
+        CommandSender sender = new CommandSender(createdJson);
+        int result = sender.sendData();
         
-        System.out.println(receivedJson);
+        String returnText = "";
         
-        return "The container with id " + cId + " has been moved to " + destination + " successfully";
+        if(result == 1) {
+            returnText += "The container with id " + cId + " has been moved to " + destination + " successfully.";
+        } else {
+            returnText += "The container with id " + cId + " could not be stopped.";
+        }
+        
+        return returnText;
     }
 }

@@ -8,6 +8,7 @@ package nl.acxdev.codewriters.cmsapi.methods;
 import java.util.HashMap;
 import java.util.Map;
 import nl.acxdev.codewriters.cmsapi.json.JsonCreator;
+import nl.acxdev.codewriters.cmsapi.sender.CommandSender;
 import org.json.simple.JSONObject;
 
 /**
@@ -36,11 +37,19 @@ public class RenameContainer {
         renameMap.put("newName", newName);
         
         JsonCreator creator = new JsonCreator(renameMap);
-        
         JSONObject createdJson = creator.createJson();
         
-        System.out.println(createdJson);
+        CommandSender sender = new CommandSender(createdJson);
+        int result = sender.sendData();
         
-        return "The name has been changed successfully";
+        String returnText = "";
+        
+        if(result == 1) {
+            returnText += "The name has been changed successfully";
+        } else {
+            returnText += "The name could not be changed";
+        }
+        
+        return returnText;
     }
 }

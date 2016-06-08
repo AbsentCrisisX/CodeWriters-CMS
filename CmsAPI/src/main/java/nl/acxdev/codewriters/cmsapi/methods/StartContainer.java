@@ -8,6 +8,7 @@ package nl.acxdev.codewriters.cmsapi.methods;
 import java.util.HashMap;
 import java.util.Map;
 import nl.acxdev.codewriters.cmsapi.json.JsonCreator;
+import nl.acxdev.codewriters.cmsapi.sender.CommandSender;
 import org.json.simple.JSONObject;
 
 /**
@@ -33,11 +34,19 @@ public class StartContainer {
         startMap.put("cId", cType);
         
         JsonCreator creator = new JsonCreator(startMap);
-        
         JSONObject createdJson = creator.createJson();
         
-        System.out.println(createdJson);
+        CommandSender sender = new CommandSender(createdJson);
+        int result = sender.sendData();
         
-        return "The container with id " + cId + " has been started successfully";
+        String returnText = "";
+        
+        if(result == 1) {
+            returnText += "The container with id " + cId + " has been started successfully.";
+        } else {
+            returnText += "The container with id " + cId + " could not be started.";
+        }
+        
+        return returnText;
     }
 }

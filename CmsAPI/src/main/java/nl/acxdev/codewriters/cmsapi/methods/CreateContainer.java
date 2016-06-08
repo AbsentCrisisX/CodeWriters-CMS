@@ -8,6 +8,7 @@ package nl.acxdev.codewriters.cmsapi.methods;
 import java.util.HashMap;
 import java.util.Map;
 import nl.acxdev.codewriters.cmsapi.json.JsonCreator;
+import nl.acxdev.codewriters.cmsapi.sender.CommandSender;
 import org.json.simple.JSONObject;
 
 /**
@@ -39,11 +40,19 @@ public class CreateContainer {
         createMap.put("destination", destination);
         
         JsonCreator creator = new JsonCreator(createMap);
+        JSONObject createdJson = creator.createJson();
         
-        JSONObject receivedJson = creator.createJson();
+        CommandSender sender = new CommandSender(createdJson);
+        int result = sender.sendData();
         
-        System.out.println(receivedJson);
+        String returnText = "";
         
-        return "The new container has been created succesfully";
+        if(result == 1) {
+            returnText += "The new container has been created successfully.";
+        } else {
+            returnText += "The new container could not be created.";
+        }
+        
+        return returnText;
     }
 }
