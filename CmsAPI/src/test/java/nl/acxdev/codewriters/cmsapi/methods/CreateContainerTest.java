@@ -5,7 +5,7 @@
  */
 package nl.acxdev.codewriters.cmsapi.methods;
 
-import nl.acxdev.codewriters.cmsapi.commands.CreateContainer;
+import nl.acxdev.codewriters.cmsapi.commands.Create;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,12 +39,12 @@ public class CreateContainerTest {
     }
 
     /**
-     * Test of createIt method, of class CreateContainer.
+     * Test of createIt method, of class Create.
      */
     @Test
     public void testCreateIt() {
         System.out.println("createIt");
-        CreateContainer instance = null;
+        Create instance = null;
         String expResult = "";
         String result = instance.createIt();
         assertEquals(expResult, result);

@@ -5,7 +5,7 @@
  */
 package nl.acxdev.codewriters.cmsapi.methods;
 
-import nl.acxdev.codewriters.cmsapi.commands.RemoveContainer;
+import nl.acxdev.codewriters.cmsapi.commands.Remove;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,12 +39,12 @@ public class RemoveContainerTest {
     }
 
     /**
-     * Test of removeIt method, of class RemoveContainer.
+     * Test of removeIt method, of class Remove.
      */
     @Test
     public void testRemoveIt() {
         System.out.println("removeIt");
-        RemoveContainer instance = null;
+        Remove instance = null;
         String expResult = "";
         String result = instance.removeIt();
         assertEquals(expResult, result);

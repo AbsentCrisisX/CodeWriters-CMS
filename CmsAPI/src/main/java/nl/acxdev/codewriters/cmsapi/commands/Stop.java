@@ -5,8 +5,8 @@
  */
 package nl.acxdev.codewriters.cmsapi.commands;
 
-import java.util.HashMap;
 import java.util.Map;
+import nl.acxdev.codewriters.cmsapi.interfaces.Command;
 import nl.acxdev.codewriters.cmsapi.json.JsonCreator;
 import nl.acxdev.codewriters.cmsapi.sender.CommandSender;
 import org.json.simple.JSONObject;
@@ -15,25 +15,16 @@ import org.json.simple.JSONObject;
  *
  * @author absentium
  */
-public class StartContainer {
-    private String cId;
-    private String name;
-    private String cType;
+public class Stop implements Command{
+
     
-    public StartContainer(String name, String cId, String cType){
-        this.cId = cId;
-        this.name = name;
-        this.cType = cType;
+    public Stop(){
+        
     }
-    
-    public String startIt (){
-        Map<String, String> startMap = new HashMap<>();
-        
-        startMap.put("name", name);
-        startMap.put("cId", cId);
-        startMap.put("cType", cType);
-        
-        JsonCreator creator = new JsonCreator(startMap);
+
+    @Override
+    public String execute(Map data) {
+        JsonCreator creator = new JsonCreator(data);
         JSONObject createdJson = creator.createJson();
         
         CommandSender sender = new CommandSender(createdJson);
@@ -42,9 +33,9 @@ public class StartContainer {
         String returnText = "";
         
         if(result == 1) {
-            returnText += "The container with id " + cId + " has been started successfully.";
+            returnText += "The container with id " + data.get("cId") + " has been stopped successfully.";
         } else {
-            returnText += "The container with id " + cId + " could not be started.";
+            returnText += "The container with id " + data.get("cId") + " could not be stopped.";
         }
         
         return returnText;

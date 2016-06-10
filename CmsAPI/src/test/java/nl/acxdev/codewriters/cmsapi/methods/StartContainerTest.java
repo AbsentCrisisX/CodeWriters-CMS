@@ -5,7 +5,7 @@
  */
 package nl.acxdev.codewriters.cmsapi.methods;
 
-import nl.acxdev.codewriters.cmsapi.commands.StartContainer;
+import nl.acxdev.codewriters.cmsapi.commands.Start;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,12 +39,12 @@ public class StartContainerTest {
     }
 
     /**
-     * Test of startIt method, of class StartContainer.
+     * Test of startIt method, of class Start.
      */
     @Test
     public void testStartIt() {
         System.out.println("startIt");
-        StartContainer instance = null;
+        Start instance = null;
         String expResult = "";
         String result = instance.startIt();
         assertEquals(expResult, result);

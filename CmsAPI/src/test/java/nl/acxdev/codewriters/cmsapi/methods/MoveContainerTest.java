@@ -5,7 +5,7 @@
  */
 package nl.acxdev.codewriters.cmsapi.methods;
 
-import nl.acxdev.codewriters.cmsapi.commands.MoveContainer;
+import nl.acxdev.codewriters.cmsapi.commands.Move;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,12 +39,12 @@ public class MoveContainerTest {
     }
 
     /**
-     * Test of moveIt method, of class MoveContainer.
+     * Test of moveIt method, of class Move.
      */
     @Test
     public void testMoveIt() {
         System.out.println("moveIt");
-        MoveContainer instance = null;
+        Move instance = null;
         String expResult = "";
         String result = instance.moveIt();
         assertEquals(expResult, result);

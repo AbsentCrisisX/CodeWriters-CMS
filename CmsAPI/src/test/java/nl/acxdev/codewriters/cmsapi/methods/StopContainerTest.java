@@ -5,7 +5,7 @@
  */
 package nl.acxdev.codewriters.cmsapi.methods;
 
-import nl.acxdev.codewriters.cmsapi.commands.StopContainer;
+import nl.acxdev.codewriters.cmsapi.commands.Stop;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,12 +39,12 @@ public class StopContainerTest {
     }
 
     /**
-     * Test of stopIt method, of class StopContainer.
+     * Test of stopIt method, of class Stop.
      */
     @Test
     public void testStopIt() {
         System.out.println("stopIt");
-        StopContainer instance = null;
+        Stop instance = null;
         String expResult = "";
         String result = instance.stopIt();
         assertEquals(expResult, result);

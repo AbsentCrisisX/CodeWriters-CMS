@@ -7,6 +7,7 @@ package nl.acxdev.codewriters.cmsapi.commands;
 
 import java.util.HashMap;
 import java.util.Map;
+import nl.acxdev.codewriters.cmsapi.interfaces.Command;
 import nl.acxdev.codewriters.cmsapi.json.JsonCreator;
 import nl.acxdev.codewriters.cmsapi.sender.CommandSender;
 import org.json.simple.JSONObject;
@@ -15,25 +16,15 @@ import org.json.simple.JSONObject;
  *
  * @author absentium
  */
-public class RemoveContainer {
-    private String cId;
-    private String name;
-    private String cType;
-    
-    public RemoveContainer(String name, String cId, String cType){
-        this.cId = cId;
-        this.name = name;
-        this.cType = cType;
+public class Move implements Command {
+
+    public Move(){
+        
     }
-    
-    public String removeIt (){
-        Map<String, String> removeMap = new HashMap<>();
-        
-        removeMap.put("name", name);
-        removeMap.put("cId", cId);
-        removeMap.put("cType", cType);
-        
-        JsonCreator creator = new JsonCreator(removeMap);
+
+    @Override
+    public String execute(Map data) {
+        JsonCreator creator = new JsonCreator(data);
         JSONObject createdJson = creator.createJson();
         
         CommandSender sender = new CommandSender(createdJson);
@@ -42,9 +33,9 @@ public class RemoveContainer {
         String returnText = "";
         
         if(result == 1) {
-            returnText += "The container with id " + cId + " has been removed successfully.";
+            returnText += "The container with id " + data.get("cId") + " has been moved to " + data.get("destination") + " successfully.";
         } else {
-            returnText += "The container with id " + cId + " could not be removed.";
+            returnText += "The container with id " + data.get("cId") + " could not be stopped.";
         }
         
         return returnText;

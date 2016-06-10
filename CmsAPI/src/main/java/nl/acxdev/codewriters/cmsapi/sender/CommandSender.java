@@ -18,6 +18,10 @@ public class CommandSender {
         this.commandData = json;
     }
     
+    /**
+     *
+     * @return
+     */
     public int sendData(){
         int result = 0;
         if(commandData != null){

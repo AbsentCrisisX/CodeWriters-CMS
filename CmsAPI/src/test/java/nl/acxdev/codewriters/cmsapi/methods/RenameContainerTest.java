@@ -5,7 +5,7 @@
  */
 package nl.acxdev.codewriters.cmsapi.methods;
 
-import nl.acxdev.codewriters.cmsapi.commands.RenameContainer;
+import nl.acxdev.codewriters.cmsapi.commands.Rename;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,12 +39,12 @@ public class RenameContainerTest {
     }
 
     /**
-     * Test of sendName method, of class RenameContainer.
+     * Test of sendName method, of class Rename.
      */
     @Test
     public void testSendName() {
         System.out.println("sendName");
-        RenameContainer instance = null;
+        Rename instance = null;
         String expResult = "";
         String result = instance.sendName();
         assertEquals(expResult, result);

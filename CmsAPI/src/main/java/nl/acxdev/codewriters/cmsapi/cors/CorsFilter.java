@@ -38,6 +38,6 @@ public final class CorsFilter {
                 });
             }
         };
-        Spark.after(filter);
+        Spark.before(filter);
     }
 }

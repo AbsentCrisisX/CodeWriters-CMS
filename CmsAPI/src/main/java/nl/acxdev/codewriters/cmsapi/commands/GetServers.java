@@ -26,7 +26,7 @@ public class GetServers {
         JSONParser parser = new JSONParser();
         
         try{
-            Object object = parser.parse(new FileReader("./src/main/resources/json/Containers.json"));
+            Object object = parser.parse(new FileReader("/Users/absentium/GitHub Projects/CodeWriters-CMS/CmsAPI/assets/Containers.json"));
             
             JSONObject obj = (JSONObject) object;
             
