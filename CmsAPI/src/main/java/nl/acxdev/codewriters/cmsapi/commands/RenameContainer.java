@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nl.acxdev.codewriters.cmsapi.methods;
+package nl.acxdev.codewriters.cmsapi.commands;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,25 +15,28 @@ import org.json.simple.JSONObject;
  *
  * @author absentium
  */
-public class StartContainer {
-    private String cId;
+public class RenameContainer {
     private String name;
+    private String cId;
     private String cType;
+    private String newName;
     
-    public StartContainer(String name, String cId, String cType){
-        this.cId = cId;
+    public RenameContainer(String name, String cId, String cType, String newName){
         this.name = name;
+        this.cId = cId;
         this.cType = cType;
+        this.newName = newName;
     }
     
-    public String startIt (){
-        Map<String, String> startMap = new HashMap<>();
+    public String sendName(){
+        Map<String, String> renameMap = new HashMap<>();
         
-        startMap.put("name", name);
-        startMap.put("cId", cId);
-        startMap.put("cId", cType);
+        renameMap.put("name", name);
+        renameMap.put("cType", cType);
+        renameMap.put("cId", cId);
+        renameMap.put("newName", newName);
         
-        JsonCreator creator = new JsonCreator(startMap);
+        JsonCreator creator = new JsonCreator(renameMap);
         JSONObject createdJson = creator.createJson();
         
         CommandSender sender = new CommandSender(createdJson);
@@ -42,9 +45,9 @@ public class StartContainer {
         String returnText = "";
         
         if(result == 1) {
-            returnText += "The container with id " + cId + " has been started successfully.";
+            returnText += "The name has been changed successfully";
         } else {
-            returnText += "The container with id " + cId + " could not be started.";
+            returnText += "The name could not be changed";
         }
         
         return returnText;

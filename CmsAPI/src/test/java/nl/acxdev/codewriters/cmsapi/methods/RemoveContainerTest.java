@@ -5,6 +5,7 @@
  */
 package nl.acxdev.codewriters.cmsapi.methods;
 
+import nl.acxdev.codewriters.cmsapi.commands.RemoveContainer;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

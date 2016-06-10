@@ -26,6 +26,9 @@ public final class CorsFilter {
         corsHeaders.put("Access-Control-Allow-Credentials", "true");
     }
 
+    /**
+     *
+     */
     public final static void apply() {
         Filter filter = new Filter() {
             @Override

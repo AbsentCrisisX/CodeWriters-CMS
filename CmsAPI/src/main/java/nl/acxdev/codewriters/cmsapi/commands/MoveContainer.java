@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nl.acxdev.codewriters.cmsapi.methods;
+package nl.acxdev.codewriters.cmsapi.commands;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,25 +15,28 @@ import org.json.simple.JSONObject;
  *
  * @author absentium
  */
-public class StopContainer {
+public class MoveContainer {
     private String cId;
     private String name;
     private String cType;
+    private String destination;
     
-    public StopContainer(String name, String cId, String cType){
-        this.cId = cId;
+    public MoveContainer(String name, String cId, String cType, String destination){
         this.name = name;
+        this.cId = cId;
         this.cType = cType;
+        this.destination = destination;
     }
     
-    public String stopIt (){
-        Map<String, String> stopMap = new HashMap<>();
+    public String moveIt(){
+        Map<String,String> moveMap = new HashMap<>();
         
-        stopMap.put("name", name);
-        stopMap.put("cId", cId);
-        stopMap.put("cType", cType);
+        moveMap.put("name", name);
+        moveMap.put("cId", cId);
+        moveMap.put("cType", cType);
+        moveMap.put("destination", destination);
         
-        JsonCreator creator = new JsonCreator(stopMap);
+        JsonCreator creator = new JsonCreator(moveMap);
         JSONObject createdJson = creator.createJson();
         
         CommandSender sender = new CommandSender(createdJson);
@@ -42,7 +45,7 @@ public class StopContainer {
         String returnText = "";
         
         if(result == 1) {
-            returnText += "The container with id " + cId + " has been stopped successfully.";
+            returnText += "The container with id " + cId + " has been moved to " + destination + " successfully.";
         } else {
             returnText += "The container with id " + cId + " could not be stopped.";
         }

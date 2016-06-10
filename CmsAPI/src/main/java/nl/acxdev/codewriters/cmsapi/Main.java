@@ -5,7 +5,7 @@
  */
 package nl.acxdev.codewriters.cmsapi;
 
-import nl.acxdev.codewriters.cmsapi.methods.*;
+import nl.acxdev.codewriters.cmsapi.commands.*;
 import static spark.Spark.*;
 import nl.acxdev.codewriters.cmsapi.cors.CorsFilter;
 
@@ -67,7 +67,7 @@ public class Main {
         
         // Create a new container on a specific server
         post("/create", (req, res) -> {
-            CreateContainer create = new CreateContainer(req.queryParams("name"), req.queryParams("cType"), req.queryParams("destination"), req.queryParams("image"), req.queryParams("port"));
+            CreateContainer create = new CreateContainer(req.queryParams("name"), req.queryParams("cType"), req.queryParams("destination"), req.queryParams("image"));
             
             String result = create.createIt();
             
